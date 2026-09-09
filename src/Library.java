@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Library {
 
-   private List<Book> books = new ArrayList<>();
+   private List<Book> bookCatalog = new ArrayList<>();
 
  public void addBook(Book book) {
     if (book.getIsbn() == null) {
