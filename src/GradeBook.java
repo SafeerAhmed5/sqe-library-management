@@ -5,9 +5,13 @@ public class GradeBook {
 
     private List<Double> scores = new ArrayList<>();
 
-    public void addScore(double score) {
-        scores.add(score);
+ public void addScore(double score) {
+    if (score < 0) {
+        throw new IllegalArgumentException("Score cannot be negative");
     }
+
+    scores.add(score);
+}
 
     public double calculateAverage() {
         if (scores.isEmpty()) {
