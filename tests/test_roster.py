@@ -1,10 +1,4 @@
 import pytest
-from gradebook.gradebook import Roster
-
-
-class Student:
-    def __init__(self, scores):
-        self.scores = scores
 
 
 @pytest.mark.parametrize('score_count,expected_error', [
@@ -12,15 +6,14 @@ class Student:
     (3, False),
     (8, True),
 ])
-def test_score_count_classes(score_count, expected_error):
-    roster = Roster()
-    student = Student([80] * score_count)
+def test_score_count_classes(score_count, expected_error, empty_roster):
+    student = type("Student", (), {"scores": [80] * score_count})()
 
     if expected_error:
         with pytest.raises(ValueError):
-            roster.add_student(student)
+            empty_roster.add_student(student)
     else:
-        roster.add_student(student)
+        empty_roster.add_student(student)
 
 
 @pytest.mark.parametrize('score_count,expected_error', [
@@ -31,12 +24,11 @@ def test_score_count_classes(score_count, expected_error):
     (6, False),
     (7, True),
 ])
-def test_score_count_boundaries(score_count, expected_error):
-    roster = Roster()
-    student = Student([80] * score_count)
+def test_score_count_boundaries(score_count, expected_error, empty_roster):
+    student = type("Student", (), {"scores": [80] * score_count})()
 
     if expected_error:
         with pytest.raises(ValueError):
-            roster.add_student(student)
+            empty_roster.add_student(student)
     else:
-        roster.add_student(student)
+        empty_roster.add_student(student)
