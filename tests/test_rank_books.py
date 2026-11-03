@@ -48,3 +48,18 @@ def test_rank_books_tie_breaks_alphabetically():
 
     result = library_module.rank_books_by_popularity(library)
     assert result == [book3, book2, book1]
+    # Cycle 5: Never-borrowed books
+def test_rank_books_handles_never_borrowed_books():
+    library = Library()
+
+    book1 = library_module.Book("Zebra", 0)
+    book2 = library_module.Book("History", 3)
+    book3 = library_module.Book("Apple", 0)
+
+    library.add_book(book1)
+    library.add_book(book2)
+    library.add_book(book3)
+
+    result = library_module.rank_books_by_popularity(library)
+
+    assert result == [book2, book3, book1]
