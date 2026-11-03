@@ -10,3 +10,7 @@ class Library:
 
     def add_book(self, book):
         self.books.append(book)
+
+
+def rank_books_by_popularity(library):
+    return []
