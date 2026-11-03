@@ -13,4 +13,8 @@ class Library:
 
 
 def rank_books_by_popularity(library):
-    return []
+    return sorted(
+        library.books,
+        key=lambda book: book.times_borrowed,
+        reverse=True
+    )
