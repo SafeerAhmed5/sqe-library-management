@@ -1,3 +1,4 @@
+
 def letter_grade(score):
     if score < 0 or score > 100:
         raise ValueError("Score must be between 0 and 100")
@@ -84,3 +85,11 @@ def validate_name(name):
             raise ValueError("Name can contain only letters, spaces, and hyphens")
 
     return True
+
+
+def percentile(student, roster):
+    s = sorted(x.average() for x in roster.students)
+    r = s.index(student.average())
+    n = len(s)
+
+    return (r / n) * 100
